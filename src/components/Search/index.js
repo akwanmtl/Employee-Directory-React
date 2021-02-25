@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-function Search () {
+function Search (props) {
   return (
     <div className="search-bar">
       <input 
@@ -9,7 +9,6 @@ function Search () {
         value={props.search}
         name="search"
         type="text"
-        className="form-control"
         id="search"
         placeholder="Search"
       />
