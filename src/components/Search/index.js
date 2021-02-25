@@ -1,11 +1,18 @@
 import React from "react";
 import "./style.css";
 
-
 function Search () {
   return (
     <div className="search-bar">
-      <input placeholder="Search"></input>
+      <input 
+        onChange={props.handleInputChange}
+        value={props.search}
+        name="search"
+        type="text"
+        className="form-control"
+        id="search"
+        placeholder="Search"
+      />
     </div>
   )
 }
