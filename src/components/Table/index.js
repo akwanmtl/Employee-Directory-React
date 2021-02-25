@@ -1,5 +1,7 @@
 import React from "react";
 import "./style.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCaretUp } from '@fortawesome/free-solid-svg-icons'
 
 function Table (props) {
   return (
@@ -8,20 +10,20 @@ function Table (props) {
         <thead>
           <tr>
             <th scope="col"></th>
-            <th scope="col">Name</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Email</th>
-            <th scope="col">DOB</th>
+            <th scope="col" id="name" onClick={props.handleClick} className="pointer" >Name  <span className="icon"><FontAwesomeIcon icon={faCaretUp} className={`rotate-${props.toggle['name']}`}/></span></th>
+            <th scope="col" id="phone" onClick={props.handleClick} className="pointer">Phone  <span className="icon"><FontAwesomeIcon icon={faCaretUp} className={`rotate-${props.toggle['phone']}`}/></span></th>
+            <th scope="col" id="email" onClick={props.handleClick} className="pointer">Email  <span className="icon"><FontAwesomeIcon icon={faCaretUp} className={`rotate-${props.toggle['email']}`}/></span></th>
+            <th scope="col" id="dob" onClick={props.handleClick} className="pointer">DOB  <span className="icon"><FontAwesomeIcon icon={faCaretUp} className={`rotate-${props.toggle['dob']}`}/></span></th>
           </tr>
         </thead>
         <tbody>
         {props.results.map(employee => (
           <tr>
-            <td scope="col"><img src={employee.picture.thumbnail}/></td>
-            <td scope="col">{employee.name.first} {employee.name.last}</td>
-            <td scope="col">{employee.phone}</td>
-            <td scope="col">{employee.email}</td>
-            <td scope="col">{employee.dob.date.substring(0,10)}</td>
+            <td><img src={employee.picture}/></td>
+            <td>{employee.name}</td>
+            <td>{employee.phone}</td>
+            <td>{employee.email}</td>
+            <td>{employee.dob}</td>
           </tr>
         ))}
         </tbody>
