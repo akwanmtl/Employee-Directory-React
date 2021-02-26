@@ -1,12 +1,12 @@
 import React from "react";
-import FunctionEmployee from "./components/FunctionEmployee";
 import Header from "./components/Header";
+import Main from "./components/Main";
 
 function App() {
   return (
     <div>
       <Header />
-      <FunctionEmployee />
+      <Main />
     </div>
   )
 }

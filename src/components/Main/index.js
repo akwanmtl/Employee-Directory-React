@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import Search from "../Search";
-import Table from "../Table";
+import Search from "./SearchBar";
+import Table from "./Table";
 import API from "../../utils/API";
 
-class FunctionEmployee extends Component {
+class Main extends Component {
 
   constructor(props) {
-    super(props)
-    this.state = { 
+    super(props);
+    this.state = {
       search: "",
       results: [],
       all: [],
@@ -29,13 +29,14 @@ class FunctionEmployee extends Component {
   generateEmployee() {
     API.generate()
       .then(res => {
-        let newRes = res.data.results.map(employee => {
+        let newRes = res.data.results.map((employee, index) => {
           return {
             'name' : employee.name.first + ' ' + employee.name.last,
             'phone' : employee.phone,
             'email' : employee.email,
             'dob' : employee.dob.date.substring(0,10),
-            'picture': employee.picture.thumbnail
+            'picture': employee.picture.thumbnail,
+            'id' : index
           }
 
         })
@@ -44,7 +45,7 @@ class FunctionEmployee extends Component {
       .catch(err => console.log(err));
   };
 
-  handleInputChange(event) {
+  handleInputChange(event){
     const name = event.target.name;
     const value = event.target.value;
     
@@ -54,26 +55,20 @@ class FunctionEmployee extends Component {
     });
   };
 
-  handleClick(event) {
-    const id = event.target.id;
-    let temp = [...this.state.all];
-    let tempToggle = {...this.state.toggle}
-    tempToggle[id] = !tempToggle[id]
-    console.log(this.state.toggle[id])
-    temp.sort((a,b) =>{
-      if(tempToggle[id]) return (a[id] > b[id]) ? 1 : -1;
+  handleClick(id) {
+    const all = [...this.state.all];
+    const toggle = {...this.state.toggle}
+    toggle[id] = !toggle[id]
+    all.sort((a,b) =>{
+      if(toggle[id]) return (a[id] > b[id]) ? 1 : -1;
       else return (a[id] < b[id]) ? 1 : -1;
     })
-    console.log(temp)
+    const results = all.filter(employee => employee.name.toLowerCase().includes(this.state.search.toLowerCase()));
     this.setState({ 
-      all: [...temp],
-      toggle: tempToggle,
+      all,
+      toggle,
+      results
     });
-    console.log(this.state.all)
-    this.setState({
-      results: temp.filter(employee => employee.name.toLowerCase().includes(this.state.search.toLowerCase())) ,
-    })
-    console.log(id)
   };
 
 
@@ -94,4 +89,4 @@ class FunctionEmployee extends Component {
   }
 }
 
-export default FunctionEmployee;
+export default Main;
