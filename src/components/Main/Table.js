@@ -3,6 +3,7 @@ import "./Table.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretUp } from '@fortawesome/free-solid-svg-icons'
 
+// renders a table of employee given the data
 function Table (props) {
   return (
     <div className="table-employee">

@@ -3,6 +3,7 @@ import Search from "./SearchBar";
 import Table from "./Table";
 import API from "../../utils/API";
 
+// Main functionality of the application
 class Main extends Component {
 
   constructor(props) {
@@ -26,6 +27,8 @@ class Main extends Component {
     this.generateEmployee();
   }
 
+  // calls on the API and retrieve the data
+  // create a new object to simplify the object and include id as index
   generateEmployee() {
     API.generate()
       .then(res => {
@@ -45,6 +48,7 @@ class Main extends Component {
       .catch(err => console.log(err));
   };
 
+  // filters the list of employee as the user search for an employee
   handleInputChange(event){
     const name = event.target.name;
     const value = event.target.value;
@@ -55,6 +59,8 @@ class Main extends Component {
     });
   };
 
+  // when the user click on the table header, it will sort in asc or desc order.
+  // if the column has been sorted in one order, it will sort in the reverse
   handleClick(id) {
     const all = [...this.state.all];
     const toggle = {...this.state.toggle}
@@ -71,7 +77,7 @@ class Main extends Component {
     });
   };
 
-
+  // renders the component
   render() {
     return (
       <div>

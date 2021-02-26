@@ -1,6 +1,7 @@
 import React from "react";
 import "./SearchBar.css";
 
+// renders a search input field
 function Search (props) {
   return (
     <div className="search-bar">
