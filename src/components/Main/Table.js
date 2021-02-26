@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./Table.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretUp } from '@fortawesome/free-solid-svg-icons'
 
@@ -19,7 +19,7 @@ function Table (props) {
         <tbody>
         {props.results.map(employee => (
           <tr>
-            <td><img src={employee.picture}/></td>
+            <td><img src={employee.picture} alt={employee.name}/></td>
             <td>{employee.name}</td>
             <td>{employee.phone}</td>
             <td>{employee.email}</td>

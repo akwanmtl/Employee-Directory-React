@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Search from "../Search";
-import Table from "../Table";
+import Search from "./SearchBar";
+import Table from "./Table";
 import API from "../../utils/API";
 
 class FunctionEmployee extends Component {
