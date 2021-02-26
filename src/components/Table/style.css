@@ -1,0 +1,48 @@
+.table-employee {
+  margin-top: 50px;
+}
+
+.table {
+  width: 70% !important; 
+  margin: auto;
+  text-align: center;
+}
+
+th:nth-child(1) {
+  width: 5%;
+}
+
+th:nth-child(2) {
+  width: 25%;
+}
+th:nth-child(3) {
+  width: 20%;
+}
+th:nth-child(4) {
+  width: 30%;
+}
+th:nth-child(5) {
+  width: 20%;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.pointer:hover > .icon {
+  visibility: visible;
+}
+
+.icon {
+  visibility: hidden;
+}
+
+.rotate-false {
+  color: red;
+}
+
+.rotate-true {
+  color: blue;
+  transform: rotate(180deg);
+}
+
